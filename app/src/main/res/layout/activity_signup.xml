@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ImageButton
+        android:id="@+id/select_img_btn"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <!--用户名-->
+    <LinearLayout
+        android:id="@+id/l_username"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/select_img_btn"
+        android:layout_centerHorizontal="true">
+
+        <EditText
+            android:id="@+id/edit_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入用户名"
+            />
+    </LinearLayout>
+    <!--电话-->
+    <LinearLayout
+        android:id="@+id/l_phone"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/l_username"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <EditText
+            android:id="@+id/edit_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="输入手机号"
+            />
+    </LinearLayout>
+    <!--验证码-->
+    <LinearLayout
+        android:id="@+id/l_authCode"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/l_phone">
+        <Button
+            android:id="@+id/btn_authCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="发送验证码"/>
+        <EditText
+            android:id="@+id/edit_authCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="7"/>
+
+    </LinearLayout>
+    <!--密码-->
+    <LinearLayout
+    android:id="@+id/l_password"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/l_authCode"
+    android:layout_centerHorizontal="true">
+
+    <EditText
+        android:id="@+id/edit_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="输入密码"
+        />
+</LinearLayout>
+    <!--确认密码-->
+    <LinearLayout
+    android:id="@+id/l_rpassword"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/l_password"
+    android:layout_centerHorizontal="true">
+
+    <EditText
+        android:id="@+id/edit_rpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="再次输入密码"
+        />
+</LinearLayout>
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l_rpassword"
+        android:text="注册"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
