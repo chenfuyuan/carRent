@@ -34,7 +34,7 @@ public class SignupActivity extends AppCompatActivity {
     private Button btn_signup;
     private Button btn_authCode;
 
-    private static final String BASE_URL = "http://localhost:8080/";
+    private static final String BASE_URL = "http://10.0.2.2:8080/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class SignupActivity extends AppCompatActivity {
             }
 
             //判断该手机号是否在数据库中
-            if (isExistDataBase()) {
+            if (isExistDataBase(phone)) {
                 Toast.makeText(SignupActivity.this, "该手机号码已存在", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -64,15 +64,15 @@ public class SignupActivity extends AppCompatActivity {
 
     }
 
-    private boolean isExistDataBase() {
+    private boolean isExistDataBase(String phone) {
         //建立OkHttp客户端
         OkHttpClient client = new OkHttpClient();
-
+        String url = BASE_URL + "authCode?phone=" + phone;
         //构建Request对象
         //采用建造者模式，链式调用指明进行get请求，传入Get的请求地址
         Request request = new Request.Builder()
                 .get()
-                .url(BASE_URL+"authCode")
+                .url(url)
                 .build();
 
         //调用请求
@@ -82,14 +82,14 @@ public class SignupActivity extends AppCompatActivity {
         call.enqueue(new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
-                ToastUtil.showToast(SignupActivity.this, "获取验证码失败");
+                Log.d(TAG, "onFailure: error:"+e.toString());
             }
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 int code = response.code();
                 Log.d(TAG, "onResponse: response.code == " + code);
-                Log.d(TAG, "onResponse: response.body == "+ response.body());
+                Log.d(TAG, "onResponse: response.body == "+ response.body().string());
             }
         });
         return false;
