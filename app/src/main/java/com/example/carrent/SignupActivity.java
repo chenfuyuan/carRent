@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 
 import com.alibaba.fastjson.JSON;
+import com.example.carrent.utils.OkHttpUtils;
 import com.example.carrent.utils.ToastUtil;
 import com.example.carrent.vo.EditTextException;
 import com.example.carrent.vo.SendSmsMessage;
@@ -20,6 +21,8 @@ import com.example.carrent.vo.SignUpVo;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -104,22 +107,8 @@ public class SignupActivity extends AppCompatActivity {
      * 向服务器发送注册请求
      */
     private void signUp() {
-        //客户端
-        OkHttpClient client = new OkHttpClient();
-
-        //封装请求体
-        String json = JSON.toJSONString(signUpVo);
-        RequestBody requestBody = RequestBody.create(JSONTYPE, json);
-
-        String url = BASE_URL + "checkSignUp";
-        //生成post请求
-        Request request = new Request.Builder()
-                .url(url)
-                .post(requestBody)
-                .build();
-
-        //发出请求
-        Call call = client.newCall(request);
+        String path = "checkSignUp";
+        Call call = OkHttpUtils.postRequestBuild(path, signUpVo);
 
         //异步处理请求
         call.enqueue(new Callback() {
@@ -217,18 +206,10 @@ public class SignupActivity extends AppCompatActivity {
      * @param phone
      */
     private void sendSms(String phone) {
-        //建立OkHttp客户端
-        OkHttpClient client = new OkHttpClient();
-        String url = BASE_URL + "authCode?phone=" + phone;
-        //构建Request对象
-        //采用建造者模式，链式调用指明进行get请求，传入Get的请求地址
-        Request request = new Request.Builder()
-                .get()
-                .url(url)
-                .build();
 
-        //调用请求
-        Call call = client.newCall(request);
+        Map<String, String> map = new HashMap<>();
+        map.put("phone", phone);
+        Call call = OkHttpUtils.getRequestBuild("authCode", map);
 
         //异步请求
         call.enqueue(new Callback() {

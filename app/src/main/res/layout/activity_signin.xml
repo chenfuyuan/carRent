@@ -44,13 +44,28 @@
             />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_signin"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/l_password"
-        android:text="登录"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@+id/l_password">
+
+        <Button
+            android:id="@+id/btn_signin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="注册" />
+
+    </LinearLayout>
+
 
 
 </RelativeLayout>
