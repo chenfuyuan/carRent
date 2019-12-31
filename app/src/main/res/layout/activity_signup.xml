@@ -95,12 +95,26 @@
         />
 </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/l_rpassword"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/l_rpassword"
+        android:layout_weight="1"
         android:text="注册"
         android:layout_centerHorizontal="true"/>
 
+    <Button
+        android:id="@+id/btn_return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="返回"
+        android:layout_centerHorizontal="true"/>
+    </LinearLayout>
 </RelativeLayout>

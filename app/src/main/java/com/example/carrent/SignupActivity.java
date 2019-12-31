@@ -42,6 +42,8 @@ public class SignupActivity extends AppCompatActivity {
 
     private Button btn_signup;
     private Button btn_authCode;
+    private Button btn_return;
+
 
     public static final String BASE_URL = "http://10.0.2.2:8080/";
     public static final MediaType JSONTYPE
@@ -55,6 +57,22 @@ public class SignupActivity extends AppCompatActivity {
         findAllView();
 
         setLisenter();
+    }
+
+    /**
+     * 找到所有控件
+     */
+    private void findAllView() {
+        edit_username = findViewById(R.id.edit_username);
+        edit_phone = findViewById(R.id.edit_phone);
+        edit_password = findViewById(R.id.edit_password);
+        edit_rpassword = findViewById(R.id.edit_rpassword);
+        edit_authcode = findViewById(R.id.edit_authCode);
+
+        btn_signup = findViewById(R.id.btn_signup);
+        btn_authCode = findViewById(R.id.btn_authCode);
+        btn_return = findViewById(R.id.btn_return);
+
     }
 
     private void setLisenter() {
@@ -76,6 +94,10 @@ public class SignupActivity extends AppCompatActivity {
                 signUp();
             }
         });
+
+        btn_return.setOnClickListener(view->{
+            finish();
+        });
     }
 
     /**
@@ -86,7 +108,7 @@ public class SignupActivity extends AppCompatActivity {
         OkHttpClient client = new OkHttpClient();
 
         //封装请求体
-        String json = com.alibaba.fastjson.JSON.toJSONString(signUpVo);
+        String json = JSON.toJSONString(signUpVo);
         RequestBody requestBody = RequestBody.create(JSONTYPE, json);
 
         String url = BASE_URL + "checkSignUp";
@@ -112,7 +134,7 @@ public class SignupActivity extends AppCompatActivity {
                 SignUpMessage message = JSON.parseObject(response.body().string(),SignUpMessage.class);
                 if (message.isSuccess()) {
                     Log.d(TAG, "onResponse: 注册成功");
-                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SignupActivity.this, SignInActivity.class);
                     startActivity(intent);
 
                 } else {
@@ -264,17 +286,5 @@ public class SignupActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * 找到所有控件
-     */
-    private void findAllView() {
-        edit_username = findViewById(R.id.edit_username);
-        edit_phone = findViewById(R.id.edit_phone);
-        edit_password = findViewById(R.id.edit_password);
-        edit_rpassword = findViewById(R.id.edit_rpassword);
-        edit_authcode = findViewById(R.id.edit_authCode);
 
-        btn_signup = findViewById(R.id.btn_signup);
-        btn_authCode = findViewById(R.id.btn_authCode);
-    }
 }
