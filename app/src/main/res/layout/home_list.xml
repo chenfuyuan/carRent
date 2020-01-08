@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/background_light">
+
+
+
+    <ImageView
+        android:id="@+id/image0"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/user" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="85dp"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_toRightOf="@+id/image0">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="8dp"
+            android:text="姓名"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/carnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="6dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="车牌"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/car"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="153dp"
+            android:layout_marginBottom="6dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="车型"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/freetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_marginLeft="13dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="20dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="空闲时间"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="250dp"
+            android:background="@drawable/buttontype"
+            android:text="预约"
+            android:textColor="@android:color/background_light"
+            android:textSize="11sp" />
+
+    </RelativeLayout>
+</RelativeLayout>

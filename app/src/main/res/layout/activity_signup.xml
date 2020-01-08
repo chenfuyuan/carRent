@@ -4,11 +4,11 @@
     android:layout_height="match_parent">
 
 
-    <ImageButton
-        android:id="@+id/select_img_btn"
+    <ImageView
+        android:id="@+id/select_img"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/user"
         android:layout_marginTop="20dp"
         android:layout_centerHorizontal="true"/>
 
@@ -17,7 +17,7 @@
         android:id="@+id/l_username"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/select_img_btn"
+        android:layout_below="@id/select_img"
         android:layout_centerHorizontal="true">
 
         <EditText

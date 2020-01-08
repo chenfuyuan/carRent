@@ -4,15 +4,18 @@ import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class OkHttpUtils {
 
@@ -20,7 +23,7 @@ public class OkHttpUtils {
     public static final MediaType JSONTYPE
             = MediaType.get("application/json; charset=utf-8");
 
-    public static Call getRequestBuild(String path, Map<String,String>parmMap) {//建立OkHttp客户端
+    public static Call getRequestBuild(String path, Map<String, String> parmMap) {//建立OkHttp客户端
         OkHttpClient client = new OkHttpClient();
         StringBuilder url = new StringBuilder(BASE_URL);
         url.append(path);
@@ -74,6 +77,23 @@ public class OkHttpUtils {
         //发出请求
         return client.newCall(request);
 
+    }
+
+    public static Call ImageRequestBuild(String path, String imagePath) {
+        OkHttpClient okHttpClient = new OkHttpClient();
+        String url = BASE_URL + path;
+        Log.d("imagePath", imagePath);
+        File file = new File(imagePath);
+        RequestBody image = RequestBody.create(MediaType.parse("image/png"), file);
+        RequestBody requestBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("file", imagePath, image)
+                .build();
+        Request request = new Request.Builder()
+                .url(url)
+                .post(requestBody)
+                .build();
+        return okHttpClient.newCall(request);
     }
 
 }

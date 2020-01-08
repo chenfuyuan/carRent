@@ -10,24 +10,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.UUID;
 
-public class UploadUtils {
+public class UploadUtil {
     private static final String TAG = "uploadFile";
     private static final int TIME_OUT = 10*1000;   //超时时间
     private static final String CHARSET = "utf-8"; //设置编码
     /**
      * android上传文件到服务器
      * @param file  需要上传的文件
-     * @param RequestURL  请求的rul
      * @return  返回响应的内容
      */
-    public static String uploadFile(File file, String RequestURL){
+    public static String uploadFile(File file, String path){
         String result = null;
         String  BOUNDARY =  UUID.randomUUID().toString();  //边界标识   随机生成
         String PREFIX = "--" , LINE_END = "\r\n";
         String CONTENT_TYPE = "multipart/form-data";   //内容类型
 
         try {
-            URL url = new URL(RequestURL);
+            URL url = new URL(path);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setReadTimeout(TIME_OUT);
             conn.setConnectTimeout(TIME_OUT);

@@ -10,4 +10,5 @@ public class SignUpVo {
     private String password;
     private String authCode;
     private String phone;
+    private String ImagePath;
 }

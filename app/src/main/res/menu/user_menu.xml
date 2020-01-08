@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/change_img"
+        android:title="更换头像"></item>
+    <item
+        android:id="@+id/logOut"
+        android:title="退出登录"></item>
 
 </menu>

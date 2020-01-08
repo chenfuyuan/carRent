@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="350dp"
+        android:layout_width="500dp"
         android:layout_height="160dp"
         android:layout_marginTop="20dp"
         android:background="#63B8FF"
@@ -12,60 +12,62 @@
     </RelativeLayout>
 
     <ImageView
-        android:id="@+id/img_btn"
+        android:id="@+id/user_Image"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:background="@null"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/user"
         android:layout_marginTop="65dp"
         android:layout_centerHorizontal="true"/>
 
     <TextView
-        android:id="@+id/username"
+        android:id="@+id/text_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="145dp"
         android:layout_centerHorizontal="true"
-        android:text="姓名"
+        android:text="未登录"
         android:textColor="@android:color/background_light"
         android:textSize="25sp" />
 
     <RelativeLayout
-        android:layout_width="350dp"
-        android:layout_height="260dp"
+        android:layout_width="500dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="180dp"
         android:layout_centerHorizontal="true">
         <Button
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@null"
-            android:text="我的预约                                                      >"
+            android:text="我的预约"
             android:textSize="20sp"
             android:gravity="left|center"/>
 
         <Button
-            android:layout_width="350dp"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="50dp"
             android:background="@null"
-            android:text="关于我们                                                      >"
+            android:text="关于我们"
             android:textSize="20sp"
             android:gravity="left|center"/>
         <Button
-            android:layout_width="350dp"
+            android:id="@+id/publish_car"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="100dp"
             android:background="@null"
-            android:text="发布信息                                                      >"
+            android:text="发布信息"
             android:textSize="20sp"
             android:gravity="left|center"/>
 
         <Button
-            android:layout_width="350dp"
+            android:id="@+id/carCheck"
+            android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="150dp"
             android:background="@null"
-            android:text="管理员审核                                                  >"
+            android:text="管理员审核"
             android:textSize="20sp"
             android:gravity="left|center"
             android:visibility="gone"/>

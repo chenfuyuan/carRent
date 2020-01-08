@@ -3,12 +3,14 @@ package com.example.carrent;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.alibaba.fastjson.JSON;
+import com.example.carrent.model.User;
 import com.example.carrent.utils.EditCheckUtils;
 import com.example.carrent.utils.OkHttpUtils;
 import com.example.carrent.utils.ToastUtil;
@@ -108,7 +110,18 @@ public class SignInActivity extends AppCompatActivity {
 
                 //成功则跳转到主界面
                 if (signInMessage.isSuccess()) {
+                    SharedPreferences sharedPreferences = getSharedPreferences("user", MODE_PRIVATE);
+                    User user = signInMessage.getUser();
+                    sharedPreferences.edit()
+                            .putString("token", user.getToken())
+                            .putString("phone", user.getPhone())
+                            .putString("password",user.getPassword())
+                            .apply();
+
+                    String token = sharedPreferences.getString("token", null);
+                    Log.d(TAG, "SignInonResponse: token = " +token);
                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                    intent.putExtra("user",user);
                     startActivity(intent);
                 } else {
                     //失败显示失败结果
