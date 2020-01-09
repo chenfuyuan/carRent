@@ -18,13 +18,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/user_Image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="30dp">
 
         <EditText
             android:id="@+id/edit_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="输入手机号"
+            android:textSize="25dp"
             />
     </LinearLayout>
 
@@ -34,12 +35,14 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/l_phone"
+        android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true">
 
         <EditText
             android:id="@+id/edit_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textSize="25dp"
             android:hint="输入密码"
             />
     </LinearLayout>
@@ -48,13 +51,15 @@
         android:layout_width="300dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/l_password">
+        android:layout_below="@+id/l_password"
+        android:layout_marginTop="30dp">
 
         <Button
             android:id="@+id/btn_signin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="登录"
+            android:background="@drawable/buttontype2"
             android:layout_weight="1"/>
 
         <Button
@@ -62,10 +67,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@drawable/buttontype2"
             android:text="注册" />
 
     </LinearLayout>
-
-
-
 </RelativeLayout>

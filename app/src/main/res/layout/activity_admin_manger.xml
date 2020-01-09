@@ -6,7 +6,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="70dp"
         >
         <TextView
             android:layout_width="wrap_content"
@@ -17,12 +17,18 @@
             android:layout_marginTop="20dp"
             />
 
-        <ImageButton
-            android:id="@+id/btn_flush"
+        <ImageView
+            android:id="@+id/flush"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/flush"
             android:layout_marginTop="10dp"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
+
+    <ListView
+        android:id="@+id/l_check"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"></ListView>
 </LinearLayout>

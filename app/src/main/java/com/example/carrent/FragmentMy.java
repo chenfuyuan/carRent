@@ -128,6 +128,14 @@ public class FragmentMy extends Fragment {
         setTextNameListener();
         setPublishCarListener();
         setMySubListener();
+        setCarCheckListener();
+    }
+
+    private void setCarCheckListener() {
+        carCheck.setOnClickListener(view->{
+            Intent intent = new Intent(getActivity(), AdminMangerActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void setMySubListener() {
