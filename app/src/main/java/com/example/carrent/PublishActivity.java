@@ -3,8 +3,11 @@ package com.example.carrent;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import android.app.Activity;
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,18 +21,22 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.example.carrent.model.Car;
 import com.example.carrent.model.User;
+import com.example.carrent.utils.GetTimeUtils;
 import com.example.carrent.utils.OkHttpUtils;
 import com.example.carrent.utils.ToastUtil;
+import com.example.carrent.utils.UpdateUiUtils;
 import com.example.carrent.vo.ImageUploadMessage;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
 
@@ -96,9 +103,8 @@ public class PublishActivity extends AppCompatActivity {
         btn_publish.setOnClickListener(view->{
             String carNumber = edit_carNumber.getText().toString();
             String carType = edit_car.getText().toString();
-            String start = getTime(start_date_picker,start_time_picker);
-            String end = getTime(end_date_picker, end_time_picker);
-
+            String start = GetTimeUtils.getTime(start_date_picker, start_time_picker);
+            String end = GetTimeUtils.getTime(end_date_picker, end_time_picker);
             car = new Car();
             car.setUser(user);
             car.setStartTime(start);
@@ -106,7 +112,6 @@ public class PublishActivity extends AppCompatActivity {
             car.setCarNumber(carNumber);
             car.setCarType(carType);
             Log.d(TAG, "setBtnPublishListener: car = " + car);
-
             uploadCarImage();
             Log.d(TAG, "setListener: startTime" + start);
             Log.d(TAG, "setListener: end" + end);
@@ -122,7 +127,7 @@ public class PublishActivity extends AppCompatActivity {
         try {
             Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(img_uri));
             Log.d(TAG, "uploadImage: bitMap no image = " + bitmap );
-//            saveMyBitmap(getBaseContext(),bitmap);
+            saveMyBitmap(getBaseContext(),bitmap);
             final  String path= Environment.getExternalStorageDirectory() + "/pic/head.jpg";
 
             File file = new File(path);
@@ -147,7 +152,7 @@ public class PublishActivity extends AppCompatActivity {
                         imagePath = message.getPath();
                         Log.d(TAG, "onResponse:" + "照片上传成功");
                         Log.d(TAG, "onResponse: 路径为:" + imagePath);
-                        car.setCarImagePath(imagePath);
+                        car.setImagePath(imagePath);
                         saveCarMessage();
                     } else {
                         ToastUtil.showToast(PublishActivity.this, message.getMessage());
@@ -213,11 +218,43 @@ public class PublishActivity extends AppCompatActivity {
         stringBuilder.append(start_date_picker.getDayOfMonth()+" ");
         stringBuilder.append(start_time_picker.getCurrentHour() + ":");
         stringBuilder.append(start_time_picker.getCurrentMinute() + ":00");
-
-
         return stringBuilder.toString();
     }
 
+
+    /**
+     * 保存到指定路径
+     * @param baseContext
+     * @param bitmap
+     */
+    private void saveMyBitmap(Context baseContext, Bitmap bitmap) {
+        String sdCardDir = Environment.getExternalStorageDirectory() + "/pic/";
+        Log.d(TAG, "saveMyBitmap: sdCardDir" + sdCardDir);
+        File appDir = new File(sdCardDir);
+        Log.d(TAG, "saveMyBitmap: appDir " + appDir.exists());
+        if (!appDir.exists()) {//不存在
+            appDir.mkdir();
+        }
+        Log.d(TAG, "saveMyBitmap: appDir 再次" +appDir.exists());
+        String fileName =  "car.jpg";
+        File file = new File(appDir, fileName);
+        try {
+            Log.d(TAG, "saveMyBitmap: file = " + file);
+            FileOutputStream fos = new FileOutputStream(file);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Intent intent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        Uri uri = Uri.fromFile(file);
+        intent.setData(uri);
+        PublishActivity.this.sendBroadcast(intent);
+        Toast.makeText(PublishActivity.this,"图片保存成功",Toast.LENGTH_SHORT).show();
+    }
 
 
     private void findAllView() {

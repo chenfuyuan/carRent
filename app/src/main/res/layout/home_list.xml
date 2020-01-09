@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@+id/image0"
+        android:id="@+id/car_image"
         android:layout_width="85dp"
         android:layout_height="85dp"
         android:layout_margin="10dp"
@@ -20,7 +20,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_toRightOf="@+id/image0">
+        android:layout_toRightOf="@+id/car_image">
 
         <TextView
             android:id="@+id/name"
@@ -32,7 +32,7 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/carnumber"
+            android:id="@+id/carNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
@@ -44,7 +44,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/car"
+            android:id="@+id/carType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
@@ -56,7 +56,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/freetime"
+            android:id="@+id/freeTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/name"
@@ -69,13 +69,14 @@
             android:textSize="12sp" />
 
         <Button
-            android:id="@+id/btn"
+            android:id="@+id/btn_subscribe"
             android:layout_width="60dp"
             android:layout_height="30dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="250dp"
+            android:layout_alignParentRight="true"
             android:background="@drawable/buttontype"
             android:text="预约"
+
             android:textColor="@android:color/background_light"
             android:textSize="11sp" />
 

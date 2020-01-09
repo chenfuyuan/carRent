@@ -115,7 +115,8 @@ public class SignInActivity extends AppCompatActivity {
                     sharedPreferences.edit()
                             .putString("token", user.getToken())
                             .putString("phone", user.getPhone())
-                            .putString("password",user.getPassword())
+                            .putString("password", user.getPassword())
+                            .putString("name", user.getName())
                             .apply();
 
                     String token = sharedPreferences.getString("token", null);

@@ -53,7 +53,7 @@ public class FragmentMy extends Fragment {
     private ImageView user_image;
     private Button publish_car;
     private Button carCheck;
-
+    private Button btn_mySub;
     private String img_src;
     private Uri img_uri;
     private String imagePath;
@@ -74,6 +74,7 @@ public class FragmentMy extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
+
     }
 
     @Override
@@ -81,6 +82,7 @@ public class FragmentMy extends Fragment {
         super.onCreateContextMenu(menu, v, menuInfo);
         Log.d(TAG, "onCreateContextMenu: 加载菜单");
         getActivity().getMenuInflater().inflate(R.menu.user_menu, menu);
+
     }
 
     private void initUser() {
@@ -125,6 +127,15 @@ public class FragmentMy extends Fragment {
     private void setListener() {
         setTextNameListener();
         setPublishCarListener();
+        setMySubListener();
+    }
+
+    private void setMySubListener() {
+        btn_mySub.setOnClickListener(view->{
+            Intent intent = new Intent(getActivity(),MySubActivity.class);
+            intent.putExtra("user", user);
+            startActivity(intent);
+        });
     }
 
     private void setPublishCarListener() {
@@ -231,6 +242,7 @@ public class FragmentMy extends Fragment {
         user_image = view.findViewById(R.id.user_Image);
         publish_car = view.findViewById(R.id.publish_car);
         carCheck = view.findViewById(R.id.carCheck);
+        btn_mySub = view.findViewById(R.id.btn_mySub);
     }
 
     @Override

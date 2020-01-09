@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="500dp"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/background"
         android:visibility="visible" />
 
+    <ImageView
+        android:id="@+id/flush"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/flush"/>
     <ListView
         android:id="@+id/homeList"
         android:layout_width="fill_parent"
         android:layout_height="500dp"
-        android:layout_below="@+id/image"
-        android:layout_marginTop="200dp">
+        android:layout_below="@+id/image">
 
     </ListView>
-</RelativeLayout>
+</LinearLayout>

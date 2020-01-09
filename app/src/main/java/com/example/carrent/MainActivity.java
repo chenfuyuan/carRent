@@ -1,13 +1,11 @@
 package com.example.carrent;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +16,7 @@ import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
 import com.alibaba.fastjson.JSON;
+import com.example.carrent.adapter.MyFragmentAdapter;
 import com.example.carrent.model.User;
 import com.example.carrent.utils.OkHttpUtils;
 

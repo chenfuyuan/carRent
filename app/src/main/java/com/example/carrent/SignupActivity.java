@@ -159,7 +159,7 @@ public class SignupActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeStream(cr.openInputStream(img_uri));
             Log.d(TAG, "uploadImage: bitMap no image = " + bitmap );
             saveMyBitmap(getBaseContext(),bitmap);
-            final  String path=Environment.getExternalStorageDirectory() + "/pic/head.jpg";
+            final  String path=Environment.getExternalStorageDirectory() + "/pic/car.jpg";
 
             File file = new File(path);
             String servicePath = "upLoadImage";

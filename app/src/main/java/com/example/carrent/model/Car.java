@@ -12,6 +12,6 @@ public class Car {
     private User user;
     private String startTime;
     private String endTime;
-    private String CarImagePath;
-
+    private String imagePath;
+    private int state;
 }
